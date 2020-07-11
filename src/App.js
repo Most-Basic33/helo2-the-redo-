@@ -9,7 +9,9 @@ function App(props) {
   return (
 
     <div className="App">
-{props.location.pathname === '/'?null:<Nav /> }
+{props.location.pathname === '/'?null:<Nav
+history={props.location}
+ /> }
 {routes}
      </div>
   );

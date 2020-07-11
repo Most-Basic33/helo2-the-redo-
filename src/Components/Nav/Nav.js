@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios';
 import {getUser, clearUser} from '../../ducks/reducer'
+import { Link } from 'react-router-dom'
  
 
 class Nav extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state ={
 user:[]
         }
@@ -16,7 +17,7 @@ user:[]
             //  history.push('/')
             console.log(this.props)
           this.props.clearUser()
-         // this.props.history.push('/')
+         // this.props.history.pathname('/')
         })
     }
     render(){
@@ -27,7 +28,7 @@ user:[]
             <div>
             <img src={profile_picture} alt='profile bot'/>
             <p>{username}</p>
-<button>Home</button>
+  <Link to='/'> <button>Home</button> </Link>
 <button>New Post</button>
 <button onClick={this.handleLogout}>Logout</button>
             </div>
