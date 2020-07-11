@@ -1,55 +1,83 @@
 import React, { Component } from 'react'
 import './Dashboard.css'
 import axios from 'axios'
+import { connect } from 'react-redux'
 
 class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            showPost:true,
-            post:[],
-            url:'/api/post/'
+            showPost: false,
+            post: [],
+            url: '/api/post/',
+            userPost: []
 
 
 
         }
-        
+
     }
     componentDidMount() {
         setTimeout(() => {
-          this.getPost()
-        },1333);
-       
-      }
-    getPost=()=>{
-        const {url} = this.state;
-        axios.get(`${url}`)
-        .then(res =>{
-            this.setState({
-                post:res.data
-            })
+            this.getPost()
+        }, 1333);
+
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.showPost !== this.state.showPost) {
+            this.getUserPost();
+        }
+
+    }
+
+    getUserPost = () => {
+        const { url, post, showPost } = this.state
+        let newPost = post;
+        if (showPost) {
+            newPost = post.filter((userPost, index) => userPost.user_id == this.props.user.user_id)
+        }
+        this.setState({
+            userPost: newPost
         })
-       
     }
-    checkBox=()=>{
-        const {showPost} = this.state;
-            this.setState({
-                showPost:!showPost
+    getPost = () => {
+        const { url } = this.state;
+        axios.get(`${url}`)
+            .then(res => {
+                this.setState({
+                    post: res.data
+                })
             })
+
     }
-    handleChange=(prop, val)=> {
+    checkBox = () => {
+        const { showPost } = this.state;
+        this.setState({
+            showPost: !showPost
+        })
+    }
+    handleChange = (prop, val) => {
         this.setState({ [prop]: val });
-      }
-      //post_id, user_id, post_url
+    }
+    //post_id, user_id, post_url
     render() {
-        console.log(this.state.showPost)
-        const {post} = this.state;
-        const mappedPosts = post.map((posts, index)=>{
-            return(
+
+        const { post, userPost } = this.state;
+        const userMappedPost = userPost.map((posts, index) => {
+            return (
+                <div key={index} >
+                    <p>{posts.post_id}</p>
+                    <p>{posts.user_id}</p>
+                    <img src={posts.post_url} alt='whateva they entered' />
+                </div>
+            )
+        })
+        const mappedPosts = post.map((posts, index) => {
+            return (
                 <div key={index}>
-                <p>{posts.post_id}</p>
-                <p>{posts.user_id}</p>
-                <img src={posts.post_url} alt='whateva they entered'/>
+                    <p>{posts.post_id}</p>
+                    <p>{posts.user_id}</p>
+                    <img src={posts.post_url} alt='whateva they entered' />
                 </div>
             )
         })
@@ -57,28 +85,34 @@ class Dashboard extends Component {
             <div className='outter-box'>
                 <div className='main-box'>
                     <h1>New Post</h1>
-               Show my Post:<input 
-            type='checkbox'
-            name='showPost'
-            id='checkBox'
-            checked={this.state.showPost}
-            onChange={this.checkBox}
-                   />
+               Show my Post:<input
+                        type='checkbox'
+                        name='showPost'
+                        id='checkBox'
+                        checked={this.state.showPost}
+                        onChange={this.checkBox}
+                    />
             Title:
                 <input />
                     <div className='image-box' >
                         <img />
-                        </div>
+                    </div>
                         Image url:
                         <input />
-                        <div className='content-box' >
-                           {mappedPosts}
-                </div>
-                <button>Post</button>
-                  
+                    <div className='content-box' >
+                    {userMappedPost}
+                        {mappedPosts}
+                    </div>
+                    <button>Post</button>
+
                 </div>
             </div>
         )
     }
 }
-export default Dashboard
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+export default connect(mapStateToProps)(Dashboard)

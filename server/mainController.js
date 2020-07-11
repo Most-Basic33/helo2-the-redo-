@@ -21,7 +21,7 @@ getSinglePost: (req, res) =>{
 
     db.get_posts(id)
     .then(post=>{res.status(200).send(post)
-    console.log(post)
+    
     })
     .catch(err=>console.log(err))
 }
