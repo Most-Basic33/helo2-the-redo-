@@ -3,6 +3,7 @@ const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
       ctrl = require('./controller'),
+      mainCtrl = require('./mainController'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -27,4 +28,9 @@ massive({
 app.post('/api/register', ctrl.register)
 app.post('/api/login', ctrl.login)
 app.get('/api/logout', ctrl.logout)
+
+app.post('/api/post', mainCtrl.createPost)
+app.get('/api/post', mainCtrl.getUserPosts)
+app.get('/api/post/:id', mainCtrl.getSinglePost)
+
 app.listen(port, () => console.log(`Memeing on port ${port}`));

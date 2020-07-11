@@ -47,7 +47,7 @@ module.exports = {
         //logout clears out the session of user data
         req.session.destroy();
         res.sendStatus(200);
-    }
+    } 
 
 }
 

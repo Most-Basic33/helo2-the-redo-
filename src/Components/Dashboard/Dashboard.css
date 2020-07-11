@@ -1,0 +1,23 @@
+.outter-box{
+    margin: auto;
+    background-color:bisque;
+    width: 80%;
+    height: 80vh;
+}
+
+.main-box{
+    margin-top: 60px;
+    margin: auto;
+    width: 75%;
+    border: 2px solid black;
+    display:flex;
+    flex-direction: column;
+
+}
+
+.image-box{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border: 1px solid black;
+    height: 30vh;
+}
