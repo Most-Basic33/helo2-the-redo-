@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './Dashboard.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import Form from '../Form/Form'
 
 class Dashboard extends Component {
     constructor() {
@@ -61,16 +60,28 @@ class Dashboard extends Component {
     handleChange = (prop, val) => {
         this.setState({ [prop]: val });
     }
+    handleDelete=()=>{
+       const {url} = this.state
+       const user_id = this.props.user.user_id
+        //const {id}= req.params;
+axios.delete(`${url}${user_id}`)
+.then(()=>this.state.getUserPost())
+.catch(err=>console.log(err))
+    }
     //post_id, user_id, post_url
     render() {
-
         const { post, userPost } = this.state;
+        console.log(this.props.user.user_id)
+
+
         const userMappedPost = userPost.map((posts, index) => {
             return (
                 <div key={index} >
                     <p>Post_Id:{posts.post_id}</p>
                     <p>User_Id:{posts.user_id}</p>
-                    Image:<img src={posts.post_url} alt='whateva they entered' />
+                    <p>Content:{posts.content}</p>
+                   <img src={posts.post_url} alt='whateva they entered' />
+                   <b onClick={this.handleDelete}>X</b>
                 </div>
             )
         })
@@ -79,7 +90,8 @@ class Dashboard extends Component {
                 <div key={index}>
                     <p>Post_Id:{posts.post_id}</p>
                     <p>User_Id:{posts.user_id}</p>
-                   image <img src={posts.post_url} alt='whateva they entered' />
+                    <p>Content:{posts.content}</p>
+                   <img src={posts.post_url} alt='whateva they entered' />
                 </div>
             )
         })

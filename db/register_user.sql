@@ -4,8 +4,8 @@ insert into meme_user (
     password,
     profile_picture
 ) values (
-    ${username},
-    ${email},
+    $1,
+    $2,
     ${password},
     ${profilePicture}
 )

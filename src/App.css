@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
+  background-image: linear-gradient(to right, #FF70A6 , #FF9770, #FFD670, #E9FF70);
 }
 
 #App {
@@ -11,4 +11,9 @@ body {
   min-height: 800px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+.mainView{
+  display: flex;
+  flex-direction: column;
 }

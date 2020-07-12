@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { getUser } from '../../ducks/reducer'
-
+import './Auth.css'
 
 
 class Auth extends Component {
@@ -63,8 +63,11 @@ class Auth extends Component {
     // console.log(this.state)
     //    console.log(this.props.history)
     return (
+      <div id='top'>
+      <h1 id='big' >HELO MEME MACHINE</h1>
       <div id="Login__parent">
         <div id="Login__child">
+        
           <input
             className="Login__input"
             type="text"
@@ -89,6 +92,7 @@ class Auth extends Component {
           </div>
           <span id="Login__GuestLink" onClick={this.proceedAsGuest}> Continue as a Guest </span>
         </div>
+      </div>
       </div>
     )
 

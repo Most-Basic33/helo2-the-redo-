@@ -32,5 +32,6 @@ app.get('/api/logout', ctrl.logout)
 app.post('/api/post', mainCtrl.createPost)
 app.get('/api/post', mainCtrl.getUserPosts)
 app.get('/api/post/:id', mainCtrl.getSinglePost)
+app.delete('/api/post/:id', mainCtrl.deletePost)
 
 app.listen(port, () => console.log(`Memeing on port ${port}`));

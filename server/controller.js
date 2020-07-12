@@ -9,7 +9,7 @@ module.exports = {
             //Does a user with this email already exist?
             const foundUser = await db.check_user({username});
             if(foundUser[0]){
-                return res.status(400).send('Email already in use')
+                return res.status(400).send('Username already in use')
             }
     
             //Hashing the users password

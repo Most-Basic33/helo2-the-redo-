@@ -1,7 +1,9 @@
 insert into post (
     user_id,
-    post_url
+    post_url,
+    content
 ) values (
     $1,
-    $2
+    $2,
+    $3
 );

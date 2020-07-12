@@ -9,10 +9,12 @@ function App(props) {
   return (
 
     <div className="App">
-{props.location.pathname === '/'?null:<Nav
+    <div className='main-view'>
+{props.location.pathname === '/'?null:<Nav 
 history={props.location}
  /> }
-{routes}
+{routes }
+</div>
      </div>
   );
 }
