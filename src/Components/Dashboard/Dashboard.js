@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Dashboard.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import Form from '../Form/Form'
 
 class Dashboard extends Component {
     constructor() {
@@ -81,6 +82,7 @@ class Dashboard extends Component {
                 </div>
             )
         })
+        
         return (
             <div className='outter-box'>
                 <div className='main-box'>
@@ -92,18 +94,10 @@ class Dashboard extends Component {
                         checked={this.state.showPost}
                         onChange={this.checkBox}
                     />
-            Title:
-                <input />
-                    <div className='image-box' >
-                        <img />
-                    </div>
-                        Image url:
-                        <input />
-                    <div className='content-box' >
-                    {userMappedPost}
-                        {mappedPosts}
-                    </div>
-                    <button>Post</button>
+                    { userMappedPost } 
+                        { mappedPosts }
+    
+
 
                 </div>
             </div>

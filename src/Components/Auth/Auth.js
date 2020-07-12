@@ -23,8 +23,8 @@ class Auth extends Component {
   }
 
 
-  handleChange(prop, val) {
-    this.setState({ [prop]: val });
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
   proceedAsGuest() {
     const { history } = this.props;

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import axios from 'axios';
 import {getUser, clearUser} from '../../ducks/reducer'
 import { Link } from 'react-router-dom'
+import './Nav.css'
  
 
 class Nav extends Component{
@@ -25,11 +26,12 @@ user:[]
         console.log(this.props.user.profile_picture)
       //  console.log(this.state.user)
         return(
-            <div>
+            <div className='main3'>
             <img src={profile_picture} alt='profile bot'/>
-            <p>{username}</p>
-  <Link to='/'> <button>Home</button> </Link>
-<button>New Post</button>
+            <h3>{username}</h3>
+      <Link to='/dashboard' >      <span>Dashboard</span></Link>
+  <Link to='/'> <button>Home</button> </Link> 
+<Link to='/form' > <button>New Post</button></Link>
 <button onClick={this.handleLogout}>Logout</button>
             </div>
         )

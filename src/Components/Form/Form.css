@@ -1,0 +1,13 @@
+.form-box{
+    border: 1px solid black;
+    height: 30vh;
+    
+    
+}
+
+.outside{
+    margin: auto;
+    width: 80%;
+    background-color: bisque;
+    height: 60vh;
+}
