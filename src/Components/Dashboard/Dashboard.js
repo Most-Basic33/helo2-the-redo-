@@ -35,8 +35,9 @@ class Dashboard extends Component {
         const { url, post, showPost } = this.state
         let newPost = post;
         if (showPost) {
-            newPost = post.filter((userPost, index) => userPost.user_id == this.props.user.user_id)
+            newPost = post.filter((userPost, index) => userPost === this.props.user['user_id'])
         }
+        console.log(newPost)
         this.setState({
             userPost: newPost
         })
@@ -67,22 +68,22 @@ class Dashboard extends Component {
         const userMappedPost = userPost.map((posts, index) => {
             return (
                 <div key={index} >
-                    <p>{posts.post_id}</p>
-                    <p>{posts.user_id}</p>
-                    <img src={posts.post_url} alt='whateva they entered' />
+                    <p>Post_Id:{posts.post_id}</p>
+                    <p>User_Id:{posts.user_id}</p>
+                    Image:<img src={posts.post_url} alt='whateva they entered' />
                 </div>
             )
         })
         const mappedPosts = post.map((posts, index) => {
             return (
                 <div key={index}>
-                    <p>{posts.post_id}</p>
-                    <p>{posts.user_id}</p>
-                    <img src={posts.post_url} alt='whateva they entered' />
+                    <p>Post_Id:{posts.post_id}</p>
+                    <p>User_Id:{posts.user_id}</p>
+                   image <img src={posts.post_url} alt='whateva they entered' />
                 </div>
             )
         })
-        
+
         return (
             <div className='outter-box'>
                 <div className='main-box'>
@@ -94,10 +95,13 @@ class Dashboard extends Component {
                         checked={this.state.showPost}
                         onChange={this.checkBox}
                     />
-                    { userMappedPost } 
-                        { mappedPosts }
-    
-
+            
+                        {userMappedPost}
+                    {mappedPosts}  
+                <div>
+              
+                </div>
+                   
 
                 </div>
             </div>

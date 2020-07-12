@@ -23,8 +23,8 @@ class Auth extends Component {
   }
 
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange(prop, val) {
+    this.setState({ [prop]: val });
   }
   proceedAsGuest() {
     const { history } = this.props;
@@ -44,7 +44,7 @@ class Auth extends Component {
     const { username, password } = this.state;
     axios.post('/api/login', { username, password })
       .then(res => {
-        console.log(res.data, "login")
+     //   console.log(res.data, "login")
         //this.setState({user: res.data})
         //set user somewhere that the app can use it (redux)
         this.props.getUser(res.data);

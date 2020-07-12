@@ -4,7 +4,7 @@ module.exports = {
         db =  req.app.get('db');
 
         db.create_post(userId, postUrl)
-        .then(post =>res.send(200).send(post))
+        .then(post =>res.sendStatus(200))
         .catch(err => res.status(500).send(err))
     },
     getUserPosts: (req, res) =>{

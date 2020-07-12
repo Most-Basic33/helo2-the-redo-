@@ -11,7 +11,7 @@ const CLEAR_USER = 'CLEAR_USER';
 
 
 export function getUser(userData){
-    console.log(userData, "reducer")
+  //  console.log(userData, "reducer")
     return {
         type: GET_USER,
         payload: userData

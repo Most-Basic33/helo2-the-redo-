@@ -16,14 +16,14 @@ user:[]
     handleLogout = () =>{
         axios.get('/api/logout/').then(()=>{
             //  history.push('/')
-            console.log(this.props)
+           // console.log(this.props)
           this.props.clearUser()
          // this.props.history.pathname('/')
         })
     }
     render(){
         const {username, profile_picture, id } = this.props.user
-        console.log(this.props.user.profile_picture)
+      //  console.log(this.props.user.profile_picture)
       //  console.log(this.state.user)
         return(
             <div className='main3'>
