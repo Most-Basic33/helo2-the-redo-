@@ -7,7 +7,7 @@ class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            showPost: false,
+            showPost: true,
             post: [],
             url: '/api/post/',
             userPost: []
@@ -25,7 +25,6 @@ class Dashboard extends Component {
     }
     componentDidUpdate(prevProps, prevState) {
         if (prevState.showPost !== this.state.showPost) {
-            this.getUserPost();
             this.getPost()
         }
 
@@ -93,6 +92,7 @@ axios.delete(`${url}${id}`)
                     <p>User_Id:{posts.user_id}</p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
+                   <b onClick={()=> this.handleDelete(posts.post_id)}>X</b>
                 </div>
             )
         })
@@ -109,7 +109,7 @@ axios.delete(`${url}${id}`)
                         onChange={this.checkBox}
                     />
             
-                    {this.state.showPost?userMappedPost:mappedPosts}
+                    {this.state.showPost?mappedPosts:userMappedPost}
                    
                 <div>
               
