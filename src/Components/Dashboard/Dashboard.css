@@ -1,11 +1,15 @@
 .outter-box{
+    position: absolute;
+    top:50px;
+    right:5px;
     margin: auto;
-    background-color:bisque;
+    background-color:transparent;
     width: 80%;
     height: 80vh;
 }
 
-.main-box{
+.main-box{ 
+  
     margin-top: 60px;
     margin: auto;
     width: 75%;

@@ -6,8 +6,9 @@
 }
 
 .outside{
+    overflow: scroll;
     margin: auto;
     width: 80%;
-    background-color: bisque;
+    background-color: transparent;
     height: 60vh;
 }
