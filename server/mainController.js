@@ -4,7 +4,7 @@ module.exports = {
         db =  req.app.get('db');
 
         db.create_post(userId, title, postUrl, content)
-        .then(post =>res.sendStatus(200))
+        .then(() =>res.sendStatus(200))
         .catch(err => res.status(500).send(err))
     },
     getUserPosts: (req, res) =>{
@@ -26,7 +26,7 @@ getSinglePost: (req, res) =>{
 deletePost: (req, res) =>{
     const {id} = req.params,
     db = req.app.get('db')
-    console.log(id, "controller ID")
+   // console.log(id, "controller ID")
     db.delete_post(id)
     .then(()=>res.sendStatus(200))
     .catch(err=> res.status(500).send(err))

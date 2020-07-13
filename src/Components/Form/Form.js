@@ -49,7 +49,7 @@ class Form extends Component {
                         />
                         <div className='image-box' >
                             <p>{this.state.title}</p>
-                            <img src={this.state.postUrl} alt='image' />
+                            <img src={this.state.postUrl} alt='url object that user typed' />
                             <p>{this.state.content}</p>
                         </div>
                         Image url:

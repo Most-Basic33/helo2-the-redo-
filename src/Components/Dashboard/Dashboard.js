@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Dashboard.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import {deletePost} from '../../ducks/reducer'
 
 class Dashboard extends Component {
     constructor() {
@@ -26,6 +27,8 @@ class Dashboard extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.showPost !== this.state.showPost) {
             this.getPost()
+        }if(prevState.userPost !== this.state.userPost){
+            this.getUserPost()
         }
 
     }
@@ -60,18 +63,13 @@ class Dashboard extends Component {
     handleChange = (prop, val) => {
         this.setState({ [prop]: val });
     }
-    handleDelete=(id)=>{
-       const {url} = this.state
-      // const user_id = this.props.user['user_id']
-        //const {id}= req.params;
-axios.delete(`${url}${id}`)
-.then(()=>console.log('deleted worked'))
-.catch(err=>console.log(err))
-    }
+
     //post_id, user_id, post_url
     render() {
         const { post, userPost } = this.state;
-       console.log(this.props)
+     //  console.log(this.props)
+       console.log(this.state)
+       console.log(this.deletePost)
 
 
         const userMappedPost = userPost.map((posts, index) => {
@@ -82,7 +80,7 @@ axios.delete(`${url}${id}`)
                     <p>Title:{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
-                   <b onClick={()=> this.handleDelete(posts.post_id)}>X</b>
+                   <b onClick={()=> deletePost(posts.post_id)}>X</b>
                 </div>
             )
         })
@@ -94,7 +92,7 @@ axios.delete(`${url}${id}`)
                     <p>{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
-                   <button onClick={()=> this.handleDelete(posts.post_id)}>Delete Post</button>
+                   <button onClick={()=> deletePost(posts.post_id)}>Delete Post</button>
                 </div>
             )
         })
@@ -123,9 +121,22 @@ axios.delete(`${url}${id}`)
         )
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
-}
-export default connect(mapStateToProps)(Dashboard)
+// const mapStateToProps = (state) => {
+//     return {
+//         user: state.user,state
+        
+//     }
+// }
+export default connect(state=>state,{deletePost})(Dashboard)
+
+//     handleDelete=(id)=>{
+//        const {url} = this.state
+//       // const user_id = this.props.user['user_id']
+//         //const {id}= req.params;
+// axios.delete(`${url}${id}`)
+// .then(()=>this.setState({
+//     post:this.state.post
+// }))
+
+// .catch(err=>console.log(err))
+//     }

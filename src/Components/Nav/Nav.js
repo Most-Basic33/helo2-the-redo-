@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios';
-import { getUser, clearUser, goHome } from '../../ducks/reducer'
+import { getUser, clearUser } from '../../ducks/reducer'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
@@ -21,9 +21,9 @@ class Nav extends Component {
         }).catch(err=>console.log(err, "You messed up on da logout???"))
     }
     render() {
-        const { username, profile_picture, id } = this.props.user
+        const { username, profile_picture } = this.props.user
         //  console.log(this.props.user.profile_picture)
-          console.log(this.props)
+        //  console.log(this.props)
         return (
             <div className='main3'>
                 <img src={profile_picture} alt='profile bot' />
