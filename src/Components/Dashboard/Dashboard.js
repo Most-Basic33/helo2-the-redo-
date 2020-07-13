@@ -26,6 +26,7 @@ class Dashboard extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.showPost !== this.state.showPost) {
             this.getUserPost();
+            this.getPost()
         }
 
     }
@@ -60,18 +61,18 @@ class Dashboard extends Component {
     handleChange = (prop, val) => {
         this.setState({ [prop]: val });
     }
-    handleDelete=()=>{
+    handleDelete=(id)=>{
        const {url} = this.state
-       const user_id = this.props.user.user_id
+      // const user_id = this.props.user['user_id']
         //const {id}= req.params;
-axios.delete(`${url}${user_id}`)
-.then(()=>this.state.getUserPost())
+axios.delete(`${url}${id}`)
+.then(()=>console.log('deleted worked'))
 .catch(err=>console.log(err))
     }
     //post_id, user_id, post_url
     render() {
         const { post, userPost } = this.state;
-      //  console.log(this.props.user.user_id)
+       console.log(this.props)
 
 
         const userMappedPost = userPost.map((posts, index) => {
@@ -81,7 +82,7 @@ axios.delete(`${url}${user_id}`)
                     <p>User_Id:{posts.user_id}</p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
-                   <b onClick={this.handleDelete}>X</b>
+                   <b onClick={()=> this.handleDelete(posts.post_id)}>X</b>
                 </div>
             )
         })
@@ -108,8 +109,8 @@ axios.delete(`${url}${user_id}`)
                         onChange={this.checkBox}
                     />
             
-                        {userMappedPost}
-                    {mappedPosts}  
+                    {this.state.showPost?userMappedPost:mappedPosts}
+                   
                 <div>
               
                 </div>

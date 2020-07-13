@@ -26,7 +26,7 @@ getSinglePost: (req, res) =>{
 deletePost: (req, res) =>{
     const {id} = req.params,
     db = req.app.get('db')
-
+    console.log(id, "controller ID")
     db.delete_post(id)
     .then(()=>res.sendStatus(200))
     .catch(err=> res.status(500).send(err))
