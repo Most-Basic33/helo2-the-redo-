@@ -1,9 +1,9 @@
 module.exports = {
     createPost: (req, res) =>{
-        const {userId, postUrl, content} = req.body
+        const {userId, postUrl, content, title} = req.body
         db =  req.app.get('db');
 
-        db.create_post(userId, postUrl, content)
+        db.create_post(userId, title, postUrl, content)
         .then(post =>res.sendStatus(200))
         .catch(err => res.status(500).send(err))
     },

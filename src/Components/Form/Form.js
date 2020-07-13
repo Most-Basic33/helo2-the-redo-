@@ -19,9 +19,9 @@ class Form extends Component {
         })
     }
     addNewPost = () => {
-        const { postUrl, content } = this.state;
+        const { postUrl,title, content } = this.state;
         const userId = this.props.user['user_id'];
-        const body = { userId, postUrl, content };
+        const body = { userId, title, postUrl, content };
         //console.log(body, "body line 25")
         axios.post(`/api/post`, body)
             .then(() => {

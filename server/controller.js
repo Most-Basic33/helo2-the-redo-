@@ -45,6 +45,7 @@ module.exports = {
     },
     logout: (req, res) => {
         //logout clears out the session of user data
+        console.log(req.session, "req.session controller")
         req.session.destroy();
         res.sendStatus(200);
     } 

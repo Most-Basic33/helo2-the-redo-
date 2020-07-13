@@ -8,7 +8,9 @@
    color: white;
    
 }
-
+#tiny{
+    font-size: xx-small;
+}
 img{
     max-width: 15vw;
     max-height: 15vh;

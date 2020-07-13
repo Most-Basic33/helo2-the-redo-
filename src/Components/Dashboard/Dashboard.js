@@ -31,7 +31,7 @@ class Dashboard extends Component {
     }
 
     getUserPost = () => {
-        const { url, post, showPost } = this.state
+        const { post, showPost } = this.state
         let newPost = post;
         if (showPost) {
             newPost = post.filter((userPost, index) => userPost === this.props.user['user_id'])
@@ -79,6 +79,7 @@ axios.delete(`${url}${id}`)
                 <div key={index} >
                     <p>Post_Id:{posts.post_id}</p>
                     <p>User_Id:{posts.user_id}</p>
+                    <p>Title:{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
                    <b onClick={()=> this.handleDelete(posts.post_id)}>X</b>
@@ -88,11 +89,12 @@ axios.delete(`${url}${id}`)
         const mappedPosts = post.map((posts, index) => {
             return (
                 <div key={index}>
-                    <p>Post_Id:{posts.post_id}</p>
+                    <small id='tiny' >Post_Id:{posts.post_id}</small>
                     <p>User_Id:{posts.user_id}</p>
+                    <p>{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
-                   <b onClick={()=> this.handleDelete(posts.post_id)}>X</b>
+                   <button onClick={()=> this.handleDelete(posts.post_id)}>Delete Post</button>
                 </div>
             )
         })

@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: linear-gradient(to right, #FF70A6 , #FF9770, #FFD670, #E9FF70);
-  font-family: 'Modak', cursive; ;
+  font-family: 'Playfair Display', serif;
 }
 
 #App {

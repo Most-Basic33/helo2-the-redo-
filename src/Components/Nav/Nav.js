@@ -14,15 +14,11 @@ class Nav extends Component {
         }
     }
     handleLogout = () => {
-        axios.get('/api/logout/').then(() => {
-            //  history.push('/')
+        axios.get('/api/logout/')
+        .then(() => {
             console.log(this.props)
-            //  this.props.goHome()
             this.props.clearUser()
-            // .then( this.props.goHome())
-
-            //this.props.user.history.pathname('/')
-        })
+        }).catch(err=>console.log(err, "You messed up on da logout???"))
     }
     render() {
         const { username, profile_picture, id } = this.props.user
@@ -35,12 +31,11 @@ class Nav extends Component {
                 <Link to='/dashboard' >  <span>Dashboard</span></Link>
                 <Link to='/'> <button>Home</button> </Link>
                 <Link to='/form' > <button>New Post</button></Link>
-             <Link onClick={this.handleLogout} to='/'>   <button onClick={this.handleLogout}>Logout</button></Link>
+             <Link to='/'><button onClick={this.handleLogout}>Logout</button></Link>
             </div>
         )
     }
 }
-
 const mapStateToProps = (state) => {
     return {
         user: state.user
