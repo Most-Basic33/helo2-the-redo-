@@ -1,6 +1,6 @@
 module.exports = {
     createPost: (req, res) =>{
-        const {userId, postUrl, content, title} = req.body
+        const {userId, postUrl, content, title} = req.body,
         db =  req.app.get('db');
 
         db.create_post(userId, title, postUrl, content)
