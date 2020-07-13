@@ -71,7 +71,7 @@ axios.delete(`${url}${user_id}`)
     //post_id, user_id, post_url
     render() {
         const { post, userPost } = this.state;
-        console.log(this.props.user.user_id)
+      //  console.log(this.props.user.user_id)
 
 
         const userMappedPost = userPost.map((posts, index) => {

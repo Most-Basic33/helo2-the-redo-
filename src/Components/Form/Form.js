@@ -22,7 +22,7 @@ class Form extends Component {
         const { postUrl, content } = this.state;
         const userId = this.props.user['user_id'];
         const body = { userId, postUrl, content };
-        console.log(body, "body line 25")
+        //console.log(body, "body line 25")
         axios.post(`/api/post`, body)
             .then(() => {
                 this.handleClear()
@@ -33,8 +33,8 @@ class Form extends Component {
     }
 
     render() {
-        console.log(this.props.user)
-   // console.log(this.state, "form js line 37")
+        // console.log(this.props.user)
+        // console.log(this.state, "form js line 37")
         return (
             <form onSubmit={this.addNewPost} className='outside'>
                 <div className='form-box'>

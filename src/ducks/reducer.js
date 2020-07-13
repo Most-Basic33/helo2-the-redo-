@@ -6,10 +6,15 @@ const initialState = {
 }
 const GET_USER = 'GET_USER';
 const CLEAR_USER = 'CLEAR_USER';
- 
+const HOME = 'HOME';
  
 
-
+export function goHome(userData){
+    return{
+        type: HOME,
+        payload: userData.history.pathname('/')
+    }
+}
 export function getUser(userData){
   // console.log(userData, "reducer")
     return {
@@ -32,7 +37,8 @@ export default function reducer(state = initialState, action){
             return{...state, user: payload};
             case CLEAR_USER:
                 return{...state, user: payload};
-              
+                case HOME:
+                return {...state, user: payload};
         default:
            return state;
     }
