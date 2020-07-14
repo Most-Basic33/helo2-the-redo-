@@ -56,6 +56,18 @@ class Dashboard extends Component {
             })
 
     }
+deletePost=(id )=>{
+   //  id=this.state.post_id
+ deletePost(id)
+let newPost = [...this.state.post]
+let index=newPost.findIndex((ele,i)=>ele.post_id===id)
+  newPost.splice(index,1);
+console.log(newPost)
+this.setState({
+    post:newPost
+})
+
+}
     checkBox = () => {
         const { showPost, post } = this.state;
        let newPost=[];
@@ -69,7 +81,7 @@ class Dashboard extends Component {
             showPost: !showPost,
             userPost:newPost
         })      
-        console.log(this.props.user['user_id'], 'Dashboard!!!!!')
+    
     }
     handleChange = (prop, val) => {
         this.setState({ [prop]: val });
@@ -79,10 +91,11 @@ class Dashboard extends Component {
     render() {
         const { post, userPost } = this.state;
        console.log(this.props.user)
-console.log()
+
 
 
         const userMappedPost = userPost.map((posts, index) => {
+            
             return (
                 <div key={index} >
                     <p>Post_Id:{posts.post_id}</p>
@@ -90,11 +103,12 @@ console.log()
                     <p>Title:{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
-                   <b onClick={()=> deletePost(posts.post_id)}>X</b>
+                   <b onClick={()=>this.deletePost(posts.post_id)}>X</b>
                 </div>
             )
         })
         const mappedPosts = post.map((posts, index) => {
+            console.log(posts)
             return (
                 <div key={index}>
                     <small id='tiny' >Post_Id:{posts.post_id}</small>
@@ -102,7 +116,7 @@ console.log()
                     <p>{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
-                   <button onClick={()=> deletePost(posts.post_id)}>Delete Post</button>
+                   <button onClick={()=> this.deletePost(posts.post_id)}>Delete Post</button>
                 </div>
             )
         })
@@ -133,22 +147,7 @@ Show my Post:<input
         )
     }
 }
-// const mapStateToProps = (state) => {
-//     return {
-//         user: state.user,state
-        
-//     }
-// }
+ 
 export default connect(state=>state,{deletePost})(Dashboard)
 
-//     handleDelete=(id)=>{
-//        const {url} = this.state
-//       // const user_id = this.props.user['user_id']
-//         //const {id}= req.params;
-// axios.delete(`${url}${id}`)
-// .then(()=>this.setState({
-//     post:this.state.post
-// }))
-
-// .catch(err=>console.log(err))
-//     }
+ 
