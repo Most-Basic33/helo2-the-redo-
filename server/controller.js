@@ -48,10 +48,18 @@ module.exports = {
     },
     logout: (req, res) => {
         //logout clears out the session of user data
-        console.log(req.session, "req.session controller")
+        //console.log(req.session.user, "req.session controller")
         req.session.destroy();
         res.sendStatus(200);
-    } 
+    },
+    logMeIn: async(req, res) =>{
+const db = req.app.get('db')
+if(req.session.user){
+console.log(req.session.user.user_id,"logMeIN controller")
+const me = await db.get_user_id(req.session.user.user_id)
+   res.status(200).send(me[0])
+}
+    }
 
 }
 

@@ -17,6 +17,7 @@ class Post extends Component {
         const { postId } = this.state;
         axios.get(`/api/post/${postId}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     foundPost: res.data
                 })
@@ -28,9 +29,10 @@ class Post extends Component {
         })
     }
     render() {
+        console.log(this.state)
        // console.log(this.props, "props")
-      //  console.log(this.state.foundPost)
-        //  console.log(this.state.foundPost['user_id'])
+      // console.log(this.state.foundPost)
+       //  console.log(this.state.foundPost['user_id'])
         return (
             <div className="outside-box">
                 <div className='input-area'>

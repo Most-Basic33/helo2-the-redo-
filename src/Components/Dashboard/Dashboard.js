@@ -9,7 +9,7 @@ class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            showPost: true,
+            showPost:true,
             post: [],
             url: '/api/post/',
             userPost: []
@@ -28,19 +28,20 @@ class Dashboard extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.showPost !== this.state.showPost) {
             this.getPost()
-        }if(prevState.userPost !== this.state.userPost){
-            this.getUserPost()
         }
 
     }
 
     getUserPost = () => {
         const { post, showPost } = this.state
-        let newPost = post;
+        let newPost=[];
         if (showPost) {
-            newPost = post.filter((userPost, index) => userPost === this.props.user['user_id'])
+           newPost = post.filter((userPost, index) =>{
+               console.log(userPost)
+         return userPost === this.props.user['user_id']
+           } )
         }
-        console.log(newPost)
+       
         this.setState({
             userPost: newPost
         })
@@ -56,10 +57,19 @@ class Dashboard extends Component {
 
     }
     checkBox = () => {
-        const { showPost } = this.state;
+        const { showPost, post } = this.state;
+       let newPost=[];
+        if (showPost) {
+           newPost = post.filter((userPost, index) =>{
+
+          return  userPost.user_id === this.props.user['user_id']})
+        }
+        console.log(newPost)
         this.setState({
-            showPost: !showPost
-        })
+            showPost: !showPost,
+            userPost:newPost
+        })      
+        console.log(this.props.user['user_id'], 'Dashboard!!!!!')
     }
     handleChange = (prop, val) => {
         this.setState({ [prop]: val });
@@ -68,9 +78,8 @@ class Dashboard extends Component {
     //post_id, user_id, post_url
     render() {
         const { post, userPost } = this.state;
-      // console.log(this.props.user)
-     //  console.log(this.state)
-      // console.log(this.deletePost)
+       console.log(this.props.user)
+console.log()
 
 
         const userMappedPost = userPost.map((posts, index) => {
