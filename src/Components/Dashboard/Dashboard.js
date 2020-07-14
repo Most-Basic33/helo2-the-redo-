@@ -3,6 +3,7 @@ import './Dashboard.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import {deletePost} from '../../ducks/reducer'
+ 
 
 class Dashboard extends Component {
     constructor() {
@@ -67,9 +68,9 @@ class Dashboard extends Component {
     //post_id, user_id, post_url
     render() {
         const { post, userPost } = this.state;
-     //  console.log(this.props)
-       console.log(this.state)
-       console.log(this.deletePost)
+      // console.log(this.props.user)
+     //  console.log(this.state)
+      // console.log(this.deletePost)
 
 
         const userMappedPost = userPost.map((posts, index) => {
@@ -98,26 +99,28 @@ class Dashboard extends Component {
         })
 
         return (
-            <div className='outter-box'>
-                <div className='main-box'>
-                    <h1>New Post</h1>
-               Show my Post:<input
-                        type='checkbox'
-                        name='showPost'
-                        id='checkBox'
-                        checked={this.state.showPost}
-                        onChange={this.checkBox}
-                    />
-            
-                    {this.state.showPost?mappedPosts:userMappedPost}
-                   
-                <div>
-              
-                </div>
-                   
+           <div className='outter-box'>
+<div className='main-box'>
+    <h1>New Post</h1>
+Show my Post:<input
+        type='checkbox'
+        name='showPost'
+        id='checkBox'
+        checked={this.state.showPost}
+        onChange={this.checkBox}
+    />
 
-                </div>
-            </div>
+    {this.state.showPost?mappedPosts:userMappedPost}
+   
+<div>
+
+</div>
+   
+
+</div>
+</div> 
+            
+           
         )
     }
 }

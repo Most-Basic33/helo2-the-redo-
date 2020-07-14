@@ -1,0 +1,14 @@
+.outside-box{
+    position: absolute;
+top:50px;
+right:5px;
+margin: auto;
+background-color:transparent;
+width: 80%;
+}
+
+.inside-area{
+    position: absolute;
+    top:50px;
+    right:5px;
+}

@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+
 module.exports = {
     register: async(req, res) => {
       
@@ -31,11 +32,13 @@ module.exports = {
         //Checks if user is already in the database, based on username
         const foundUser = await db.check_user({username});
         if(!foundUser[0]){
+           
             return res.status(400).send('Username not found');
         }
          //Compare the passwords to make they match
          const authenticated = bcrypt.compareSync(password, foundUser[0].password);
          if(!authenticated){
+            
              return res.status(401).send('Password is incorrect')
          }
  //Set user on session, send it client-side

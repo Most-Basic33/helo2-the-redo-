@@ -29,8 +29,8 @@ class Nav extends Component {
                 <img src={profile_picture} alt='profile bot' />
                 <h3>{username}</h3>
                 <Link to='/dashboard' >  <span>Dashboard</span></Link>
-                <Link to='/'> <button>Home</button> </Link>
                 <Link to='/form' > <button>New Post</button></Link>
+                <Link to='/post' > <button>Search Post</button> </Link>
              <Link to='/'><button onClick={this.handleLogout}>Logout</button></Link>
             </div>
         )

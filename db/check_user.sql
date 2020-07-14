@@ -1,2 +1,2 @@
 select * from meme_user
-where username = ${username}
+where username = ${username};

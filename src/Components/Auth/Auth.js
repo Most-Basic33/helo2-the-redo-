@@ -46,11 +46,10 @@ class Auth extends Component {
     axios.post('/api/login', { username, password })
       .then(res => {
      //   console.log(res.data, "login")
-        //this.setState({user: res.data})
+        this.setState({user: res.data})
         //set user somewhere that the app can use it (redux)
         this.props.getUser(res.data);
         //route the user away from landing, to dash
-
         // console.log(this.props.history)
       }).then(() => {
         this.props.history.push('/dashboard');
