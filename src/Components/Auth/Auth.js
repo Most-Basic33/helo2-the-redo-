@@ -54,7 +54,9 @@ class Auth extends Component {
       }).then(() => {
         this.props.history.push('/dashboard');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert('Wrong Password asshole!!!')
+        console.log(err)});
   }
   
 

@@ -98,7 +98,7 @@ this.setState({
             
             return (
                 <div key={index} >
-                    <p>Post_Id:{posts.post_id}</p>
+                    <p>Post_Id:{posts.post_id}</p><img src={this.props.user.profile_picture} alt='profile'/>
                     <p>User_Id:{posts.user_id}</p>
                     <p>Title:{posts.title} </p>
                     <p>Content:{posts.content}</p>
@@ -112,7 +112,7 @@ this.setState({
             return (
                 <div key={index}>
                     <small id='tiny' >Post_Id:{posts.post_id}</small>
-                    <p>User_Id:{posts.user_id}</p>
+                    <p>User_Id:{posts.user_id}</p><img src={posts.profile_picture} alt="alt profile" />
                     <p>{posts.title} </p>
                     <p>Content:{posts.content}</p>
                    <img src={posts.post_url} alt='whateva they entered' />
