@@ -4,9 +4,11 @@ const express = require('express'),
       session = require('express-session'),
       ctrl = require('./controller'),
       mainCtrl = require('./mainController'),
-      {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
+      {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, NODE_ENV} = process.env,
       port = SERVER_PORT,
       app = express();
+
+      console.log(process.env.NODE_ENV)
 
 app.use(express.json());
 
@@ -36,3 +38,13 @@ app.get('/api/post/:id', mainCtrl.getSinglePost)
 app.delete('/api/post/:id', mainCtrl.deletePost)
 
 app.listen(port, () => console.log(`Memeing on port ${port}`));
+
+//Hosting
+
+if(NODE_ENV === 'production'){
+    app.use(express.static(__dirname + '/..build'))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../build/index.html'))
+    })
+}

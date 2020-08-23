@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import './Dashboard.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import {deletePost} from '../../ducks/reducer'
- 
+import { deletePost } from '../../ducks/reducer'
+
 
 class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            showPost:true,
+            showPost: true,
             post: [],
             url: '/api/post/',
             userPost: []
@@ -34,14 +34,14 @@ class Dashboard extends Component {
 
     getUserPost = () => {
         const { post, showPost } = this.state
-        let newPost=[];
+        let newPost = [];
         if (showPost) {
-           newPost = post.filter((userPost, index) =>{
-               console.log(userPost)
-         return userPost === this.props.user['user_id']
-           } )
+            newPost = post.filter((userPost, index) => {
+                console.log(userPost)
+                return userPost === this.props.user['user_id']
+            })
         }
-       
+
         this.setState({
             userPost: newPost
         })
@@ -56,32 +56,33 @@ class Dashboard extends Component {
             })
 
     }
-deletePost=(id )=>{
-   //  id=this.state.post_id
- deletePost(id)
-let newPost = [...this.state.post]
-let index=newPost.findIndex((ele,i)=>ele.post_id===id)
-  newPost.splice(index,1);
-console.log(newPost)
-this.setState({
-    post:newPost
-})
+    deletePost = (id) => {
+        //  id=this.state.post_id
+        deletePost(id)
+        let newPost = [...this.state.post]
+        let index = newPost.findIndex((ele, i) => ele.post_id === id)
+        newPost.splice(index, 1);
+        console.log(newPost)
+        this.setState({
+            post: newPost
+        })
 
-}
+    }
     checkBox = () => {
         const { showPost, post } = this.state;
-       let newPost=[];
+        let newPost = [];
         if (showPost) {
-           newPost = post.filter((userPost, index) =>{
+            newPost = post.filter((userPost, index) => {
 
-          return  userPost.user_id === this.props.user['user_id']})
+                return userPost.user_id === this.props.user['user_id']
+            })
         }
         console.log(newPost)
         this.setState({
             showPost: !showPost,
-            userPost:newPost
-        })      
-    
+            userPost: newPost
+        })
+
     }
     handleChange = (prop, val) => {
         this.setState({ [prop]: val });
@@ -90,20 +91,21 @@ this.setState({
     //post_id, user_id, post_url
     render() {
         const { post, userPost } = this.state;
-       console.log(this.props.user)
+        console.log(this.props.user)
 
 
 
         const userMappedPost = userPost.map((posts, index) => {
-            
+
             return (
                 <div key={index} >
-                    <p>Post_Id:{posts.post_id}</p><img src={this.props.user.profile_picture} alt='profile'/>
+                    <p>Post_Id:{posts.post_id}</p>
                     <p>User_Id:{posts.user_id}</p>
+                    <img src={this.props.user.profile_picture} alt='profile' />
                     <p>Title:{posts.title} </p>
                     <p>Content:{posts.content}</p>
-                   <img src={posts.post_url} alt='whateva they entered' />
-                   <b onClick={()=>this.deletePost(posts.post_id)}>X</b>
+                    <img src={posts.post_url} alt='whateva they entered' />
+                    <b onClick={() => this.deletePost(posts.post_id)}>X</b>
                 </div>
             )
         })
@@ -111,43 +113,42 @@ this.setState({
             console.log(posts)
             return (
                 <div key={index}>
-                    <small id='tiny' >Post_Id:{posts.post_id}</small>
+                    <b id='tiny' >Post_Id:{posts.post_id}</b>
                     <p>User_Id:{posts.user_id}</p><img src={posts.profile_picture} alt="alt profile" />
                     <p>{posts.title} </p>
                     <p>Content:{posts.content}</p>
-                   <img src={posts.post_url} alt='whateva they entered' />
-                   <button onClick={()=> this.deletePost(posts.post_id)}>Delete Post</button>
+                    <img src={posts.post_url} alt='whateva they entered' />
+                    <button onClick={() => this.deletePost(posts.post_id)}>Delete Post</button>
                 </div>
             )
         })
 
         return (
-           <div className='outter-box'>
-<div className='main-box'>
-    <h1>New Post</h1>
+            <div className='outter-box'>
+                <div className='main-box'>
+                    <h1>New Post</h1>
 Show my Post:<input
-        type='checkbox'
-        name='showPost'
-        id='checkBox'
-        checked={this.state.showPost}
-        onChange={this.checkBox}
-    />
+                        type='checkbox'
+                        name='showPost'
+                        id='checkBox'
+                        checked={this.state.showPost}
+                        onChange={this.checkBox}
+                    />
 
-    {this.state.showPost?mappedPosts:userMappedPost}
-   
-<div>
+                    {this.state.showPost ? mappedPosts : userMappedPost}
 
-</div>
-   
+                    <div>
 
-</div>
-</div> 
-            
-           
+                    </div>
+
+
+                </div>
+            </div>
+
+
         )
     }
 }
- 
-export default connect(state=>state,{deletePost})(Dashboard)
 
- 
+export default connect(state => state, { deletePost })(Dashboard)
+
