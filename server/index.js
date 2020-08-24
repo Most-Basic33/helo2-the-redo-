@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express'),
+    path = require('path'),
       massive = require('massive'),
       session = require('express-session'),
       ctrl = require('./controller'),
@@ -41,10 +42,12 @@ app.listen(port, () => console.log(`Memeing on port ${port}`));
 
 //Hosting
 
-if(NODE_ENV === 'production'){
-    app.use(express.static(__dirname + '/..build'))
-
+ 
+    app.use(express.static(__dirname + '/../build'))
+    
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../build/index.html'))
+      res.sendFile(path.join(__dirname, '../build/index.html'))
     })
-}
+    
+  
+  
