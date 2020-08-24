@@ -98,7 +98,7 @@ class Dashboard extends Component {
         const userMappedPost = userPost.map((posts, index) => {
 
             return (
-                <div key={index} >
+                <div id='post' key={index} >
                     <p>Post_Id:{posts.post_id}</p>
                     <p>User_Id:{posts.user_id}</p>
                     <img src={this.props.user.profile_picture} alt='profile' />
