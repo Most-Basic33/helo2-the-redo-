@@ -42,7 +42,7 @@ app.listen(port, () => console.log(`Memeing on port ${port}`));
 
 //Hosting
 
- 
+
     app.use(express.static(__dirname + '/../build'))
     
     app.get('*', (req, res) => {
