@@ -1,7 +1,7 @@
 .outside-box{
     position: absolute;
 top:50px;
-right:5px;
+left:500px;
 margin: auto;
 background-color:transparent;
 width: 80%;
@@ -11,4 +11,8 @@ width: 80%;
     position: absolute;
     top:50px;
     right:5px;
+}
+#divid{
+    padding-left: 20px;
+    margin: auto;
 }

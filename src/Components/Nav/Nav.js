@@ -40,10 +40,12 @@ class Nav extends Component {
             <div className='main3'>
                 <img src={profile_picture} alt='profile bot' />
                 <h3>{username}</h3>
-                <Link to='/dashboard' >  <span>Dashboard</span></Link>
+                <Link to='/dashboard' >  <span id='dashy' > Return To Dashboard</span></Link>
+                <ul id='list'>
                 <Link to='/form' > <button>New Post</button></Link>
                 <Link to='/post' > <button>Search Post</button> </Link>
              <Link to='/'><button onClick={this.handleLogout}>Logout</button></Link>
+             </ul>
             </div>
         )
     }

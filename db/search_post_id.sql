@@ -1,2 +1,2 @@
 select * from post
-where id = $1
+where id = $1;

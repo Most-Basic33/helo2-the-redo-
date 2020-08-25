@@ -2,13 +2,23 @@ import axios from'axios'
 
 
 const initialState = {
-    user: {}
+    user: {},
+    found:[]
 }
 const GET_USER = 'GET_USER';
 const CLEAR_USER = 'CLEAR_USER';
 const HOME = 'HOME';
-const DELETE = 'DELETE'
-const url = '/api/post/'
+const DELETE = 'DELETE';
+const url = '/api/post/';
+const FOUND_POST = 'FOUND_POST'
+
+export function foundPost(found) {
+    console.log(found)
+    return{
+        type: FOUND_POST,
+        payload: found
+    }
+}
 
 export function goHome(userData) {
     return {
@@ -26,7 +36,8 @@ export function getUser(userData) {
 export function clearUser() {
     return {
         type: CLEAR_USER,
-        payload: {}
+        payload: {},
+        
     }
 }
 export function deletePost(id) {
@@ -36,6 +47,7 @@ export function deletePost(id) {
             .then(response => response.data)
     }
 }
+
 
 
 export default function reducer(state = initialState, action) {
@@ -48,7 +60,9 @@ export default function reducer(state = initialState, action) {
         case HOME:
             return { ...state, user: payload };
             case DELETE:
-                return {...state, user:payload}
+                return {...state, user:payload};
+                case FOUND_POST:
+                    return {...state, found: payload}
         default:
             return state;
     }

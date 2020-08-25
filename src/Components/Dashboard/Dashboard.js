@@ -98,7 +98,7 @@ class Dashboard extends Component {
         const userMappedPost = userPost.map((posts, index) => {
 
             return (
-                <div id='post' key={index} >
+                <div className='posts' key={index} >
                     <p>Post_Id:{posts.post_id}</p>
                     <p>User_Id:{posts.user_id}</p>
                     <img src={this.props.user.profile_picture} alt='profile' />
@@ -112,13 +112,20 @@ class Dashboard extends Component {
         const mappedPosts = post.map((posts, index) => {
             console.log(posts)
             return (
-                <div key={index}>
-                    <b id='tiny' >Post_Id:{posts.post_id}</b>
-                    <p>User_Id:{posts.user_id}</p><img src={posts.profile_picture} alt="alt profile" />
-                    <p>{posts.title} </p>
+                <div className='posts' key={index}>
+<ul id='p1'>
+                  <b id='tiny' >Post_Id:{posts.post_id}</b>
+                    <p >User_Id:{posts.user_id}</p><img src={posts.profile_picture} alt="alt profile" />  
+                    <p >{posts.title} </p>
+                    </ul>
+
+                    <ul id='p2'>
                     <p>Content:{posts.content}</p>
                     <img src={posts.post_url} alt='whateva they entered' />
-                    <button onClick={() => this.deletePost(posts.post_id)}>Delete Post</button>
+                    </ul>
+                    <button id='butt' onClick={() => this.deletePost(posts.post_id)}>Delete Post</button>
+
+
                 </div>
             )
         })
@@ -126,7 +133,7 @@ class Dashboard extends Component {
         return (
             <div className='outter-box'>
                 <div className='main-box'>
-                    <h1>New Post</h1>
+                    <h1 id='h1s'>Friend's New Meme's</h1>
 Show my Post:<input
                         type='checkbox'
                         name='showPost'

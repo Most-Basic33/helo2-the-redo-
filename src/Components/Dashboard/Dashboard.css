@@ -25,6 +25,23 @@
     border: 1px solid black;
     height: 30vh;
 }
-#post{
-
+.posts{
+    display: flex;
+    height: fit-content;
+    width: 500px;
+border:3px solid black;
+margin: auto;
+padding: -4px;
+box-shadow: 05px 05px 5px 0px ;
 }
+ #p1{
+width: 33%;
+ }
+ #p2{
+width: 33%;
+ }
+ #h1s{
+     margin: auto;
+     font-size:70px;
+     font-family: cursive;
+ }
